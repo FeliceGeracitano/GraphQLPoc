@@ -3,6 +3,7 @@ import graphqlHTTP from 'express-graphql';
 import schema from './schema/schema';
 
 const app = express();
+const PORT = 8000;
 
 app.use(
   '/graphql',
@@ -14,8 +15,11 @@ app.use(
 
 app.get('/', (req, res) => res.end('homepage'));
 
-app.listen(8000, (err) => {
+app.listen(PORT, (err) => {
   if (err) {
     throw new Error(err);
   }
 });
+
+// eslint-disable-next-line
+console.log(`*** Server is Running on port: ${PORT}***`);
