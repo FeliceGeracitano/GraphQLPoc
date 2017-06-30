@@ -26,13 +26,13 @@ const productsData = Array(10).fill(0).map((el, index) => ({
 const productsImagesData = Array(10).fill(0).map((el, index) => ({
   id: `product-images-xx-${index}`,
   meta: 'meta',
+  description: `product Image description ${index}`,
   urls: [
     `www.google.com/images${index}`,
     `www.google.com/images${index}`,
     `www.google.com/images${index}`,
     `www.google.com/images${index}`
-  ],
-  description: `product description ${index}`
+  ]
 }));
 
 module.exports = {

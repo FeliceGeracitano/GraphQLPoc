@@ -18,7 +18,7 @@ const ProductImagesType = new GraphQLObjectType({
       resolve: images => images.urls
     },
     description: {
-      type: new GraphQLList(GraphQLString),
+      type: GraphQLString,
       resolve: images => images.description
     }
   }
@@ -80,7 +80,7 @@ const CartType = new GraphQLObjectType({
         const products = [];
         cart.products.forEach((el) => {
           const prod = productsData.find(product => product.id === el.id);
-          products.push({ ...prod, qty: el.qty });
+          products.push(Object.assign({}, prod, { qty: el.qty }));
         });
         return products;
       }
@@ -96,6 +96,18 @@ const cart = {
   resolve: () => cartData
 };
 
+const product = {
+  type: ProductType,
+  args: {
+    id: { type: GraphQLString }
+  },
+  resolve: (_, args) => {
+    const item = productsData.find(prod => prod.id === args.id);
+    return item && Object.assign(item, { qty: 1 });
+  }
+};
+
 module.exports = {
-  cart
+  cart,
+  product
 };
