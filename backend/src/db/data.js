@@ -1,12 +1,11 @@
 const cartData = {
   id: 'cart-xx-id-0',
-  total: 12345,
   description: 'Description on Cart item',
   currency: '€',
   products: [
     {
       id: 'product-xx-id-0',
-      qty: 2
+      qty: 4
     },
     {
       id: 'product-xx-id-1',
@@ -17,11 +16,27 @@ const cartData = {
 
 const productsData = Array(10).fill(0).map((el, index) => ({
   id: `product-xx-id-${index}`,
+  name: `name-xx-id-${index}`,
   imgUrl: `www.google.com/${index}`,
+  description: `product description ${index}`,
+  productImagesId: `product-images-xx-${index}`,
+  price: 10,
+}));
+
+const productsImagesData = Array(10).fill(0).map((el, index) => ({
+  id: `product-images-xx-${index}`,
+  meta: 'meta',
+  urls: [
+    `www.google.com/images${index}`,
+    `www.google.com/images${index}`,
+    `www.google.com/images${index}`,
+    `www.google.com/images${index}`
+  ],
   description: `product description ${index}`
 }));
 
 module.exports = {
   cartData,
-  productsData
+  productsData,
+  productsImagesData
 };

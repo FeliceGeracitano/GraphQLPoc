@@ -1,5 +1,28 @@
-import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
-import { cartData, productsData } from '../db/data';
+import { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLFloat } from 'graphql';
+import { cartData, productsData, productsImagesData } from '../db/data';
+
+const ProductImagesType = new GraphQLObjectType({
+  name: 'productImages',
+  description: 'Product images descriptions...',
+  fields: {
+    id: {
+      type: GraphQLString,
+      resolve: images => images.id
+    },
+    meta: {
+      type: GraphQLString,
+      resolve: images => images.meta
+    },
+    urls: {
+      type: new GraphQLList(GraphQLString),
+      resolve: images => images.urls
+    },
+    description: {
+      type: new GraphQLList(GraphQLString),
+      resolve: images => images.description
+    }
+  }
+});
 
 const ProductType = new GraphQLObjectType({
   name: 'product',
@@ -9,10 +32,26 @@ const ProductType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: product => product.id
     },
-    imgUrl: {
-      type: GraphQLString,
-      resolve: product => product.imgUrl
+    qty: {
+      type: GraphQLFloat,
+      resolve: product => product.qty
     },
+    name: {
+      type: GraphQLString,
+      resolve: product => product.name
+    },
+    description: {
+      type: GraphQLString,
+      resolve: product => product.description
+    },
+    price: {
+      type: GraphQLFloat,
+      resolve: product => product.price
+    },
+    images: {
+      type: ProductImagesType,
+      resolve: product => productsImagesData.find(images => images.id === product.productImagesId)
+    }
   }
 });
 
@@ -21,8 +60,11 @@ const CartType = new GraphQLObjectType({
   description: 'Cart description...',
   fields: {
     total: {
-      type: GraphQLString,
-      resolve: cart => cart.total
+      type: GraphQLFloat,
+      resolve: cart => cart.products.reduce((acc, next) => {
+        const { price } = productsData.find(el => el.id === next.id);
+        return acc + (price * next.qty);
+      }, 0)
     },
     description: {
       type: GraphQLString,
@@ -35,8 +77,12 @@ const CartType = new GraphQLObjectType({
     products: {
       type: new GraphQLList(ProductType),
       resolve: (cart) => {
-        const prodIds = cart.products.map(el => el.id);
-        return productsData.filter(product => prodIds.includes(product.id));
+        const products = [];
+        cart.products.forEach((el) => {
+          const prod = productsData.find(product => product.id === el.id);
+          products.push({ ...prod, qty: el.qty });
+        });
+        return products;
       }
     }
   }
@@ -49,7 +95,6 @@ const cart = {
   },
   resolve: () => cartData
 };
-
 
 module.exports = {
   cart
