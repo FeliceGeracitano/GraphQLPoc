@@ -4,9 +4,11 @@ import schema from './schema/schema';
 
 const app = express();
 const PORT = 8000;
+const cors = require('cors');
 
 app.use(
   '/graphql',
+  cors(),
   graphqlHTTP({
     schema,
     graphiql: true
