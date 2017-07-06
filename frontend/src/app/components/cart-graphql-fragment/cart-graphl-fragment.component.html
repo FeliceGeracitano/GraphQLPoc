@@ -1,0 +1,9 @@
+<div class="cart-graphl-fragment-wrapper">
+  <h3 class="cart-graphl-fragment-header">
+    <span class="description">{{description}}</span>
+    <span class="total">{{currency}}{{total}}</span>
+  </h3>
+  <div *ngFor="let product of products">
+   <product [product]="product"></product>
+  </div>
+</div>

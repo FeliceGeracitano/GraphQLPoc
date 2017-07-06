@@ -1,0 +1,6 @@
+.product-wrapper {
+  margin-top: 5px;
+  border: 2px solid black;
+  height: 50px;
+  flex: 'flex-grow';
+}

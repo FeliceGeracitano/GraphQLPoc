@@ -1,6 +1,30 @@
 import { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLFloat } from 'graphql';
 import { cartData, productsData, productsImagesData } from '../db/data';
 
+/*
+Query example
+{
+  cart {
+   total,
+    description,
+    currency,
+    products{
+      id,
+      qty,
+      name,
+      description,
+      price,
+      images {
+        id,
+        meta,
+        urls,
+        description
+      }
+    }
+  }
+}*/
+
+
 const ProductImagesType = new GraphQLObjectType({
   name: 'productImages',
   description: 'Product images descriptions...',

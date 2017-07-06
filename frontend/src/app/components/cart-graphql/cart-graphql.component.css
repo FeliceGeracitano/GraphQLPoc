@@ -1,0 +1,15 @@
+.cart-graphql-wrapper {
+  max-width: 600x;
+  padding: 5px 10px 5px 10px;
+  background-color: honeydew;
+  border: 1px solid lightslategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.cart-graphql-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

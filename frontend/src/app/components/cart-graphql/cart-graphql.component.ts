@@ -26,11 +26,11 @@ const CartQuery = gql`
   }
 `;
 @Component({
-  selector: 'cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'cart-graphql',
+  templateUrl: './cart-graphql.component.html',
+  styleUrls: ['./cart-graphql.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartGraphqlComponent implements OnInit {
 
   cartSubscription: Subscription;
   loading = true;
