@@ -13,3 +13,19 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.cart-graphl-fragment-header > .description {
+  flex-grow: 1;
+}
+
+.cart-graphl-fragment-header > .more-less {
+  width: 20px;
+  cursor: pointer;
+  text-align: right;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}

@@ -3,7 +3,7 @@ import { cartData, productsData, productsImagesData } from '../db/data';
 
 /*
 Query example
-{
+/*{
   cart {
    total,
     description,

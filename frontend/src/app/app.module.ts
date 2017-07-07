@@ -17,9 +17,9 @@ import { provideClient } from './client';
 @NgModule({
   declarations: [
     AppComponent,
-    CartRestComponent,
     CartGraphqlComponent,
     CartGraphlFragmentComponent,
+    CartRestComponent,
     ProductComponent
   ],
   imports: [

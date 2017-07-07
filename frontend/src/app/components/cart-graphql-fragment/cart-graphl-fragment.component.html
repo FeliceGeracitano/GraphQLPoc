@@ -2,8 +2,11 @@
   <h3 class="cart-graphl-fragment-header">
     <span class="description">{{description}}</span>
     <span class="total">{{currency}}{{total}}</span>
+    <span class="more-less" (click)="toggleViewDropDown()">{{toggleCharacter}}</span>
   </h3>
-  <div *ngFor="let product of products">
-   <product [product]="product"></product>
+  <div *ngIf="showBreakdown">
+    <div *ngFor="let product of products">
+    <product [product]="product"></product>
+    </div>
   </div>
 </div>
