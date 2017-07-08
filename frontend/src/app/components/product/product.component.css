@@ -3,4 +3,6 @@
   border: 2px solid black;
   padding: 10px;
   flex: 'flex-grow';
+  display: flex;
+  flex-direction: column;
 }

@@ -13,8 +13,8 @@ interface product {
 const CartQuery = gql`
   query allPosts {
     cart {
-      total
-      description
+      total,
+      description,
       currency
     }
   }
@@ -23,13 +23,14 @@ const CartQuery = gql`
 const CartQueryWithProducts = gql`
   query allPosts {
     cart {
-      total
-      description
-      currency
+      total,
+      description,
+      currency,
       products {
-        id
-        name
-        description
+        id,
+        name,
+        price,
+        description,
         qty
       }
     }

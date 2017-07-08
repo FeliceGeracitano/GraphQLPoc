@@ -1,10 +1,13 @@
-<!--The whole content below can be removed with the new code.-->
 <div class="app-container">
-  <h1> my GraphQL Cart </h1>
-  <div>
-    <cart-graphql class="cart-graphql"></cart-graphql>
-    <cart-graphql-fragment></cart-graphql-fragment>
-    <cart-rest class="cart-http"></cart-rest>
+  <div class='header'>
+      <h1 class="title">Rest vs Graphql: Cart Example</h1>
+    <nav>
+      <a routerLink="/rest" routerLinkActive="active">Rest</a>
+      <a routerLink="/graphql" routerLinkActive="active">Graph</a>
+      <a routerLink="/graphqlmore" routerLinkActive="active">More</a>
+    </nav>
+  </div>
+  <div class="view-container">
+    <router-outlet></router-outlet>
   </div>
 </div>
-

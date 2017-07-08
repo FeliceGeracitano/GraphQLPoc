@@ -3,3 +3,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+.app-container > .header {
+  all: inherit
+}
+
+.view-container {
+  width: 100%;
+  max-width: 800px;
+}
